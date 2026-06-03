@@ -1,16 +1,19 @@
+import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#050816] text-gray-400 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-12">
+    <footer className="bg-[#010103]  text-gray-400">
+      <div className="max-w-7xl mx-auto px-4 py-12 border-t border-gray-800">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Logo & Description */}
           <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold">
-              <span className="text-white">Hire</span>
-              <span className="text-blue-500">Hub</span>
-            </h2>
+            <Link href="/">
+              <h2 className="text-3xl font-bold">
+                <span className="text-white">Hire</span>
+                <span className="text-blue-500">Hub</span>
+              </h2>
+            </Link>
 
             <p className="mt-5 max-w-sm text-sm leading-7 text-gray-500">
               The AI-native career platform. Built for people who take their
@@ -114,7 +117,7 @@ const Footer = () => {
 
         {/* Bottom Footer */}
         <div className="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
-          <p>Copyright 2026 — HireHub</p>
+          <p>Copyright 2026 - HireHub</p>
 
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-white transition">
