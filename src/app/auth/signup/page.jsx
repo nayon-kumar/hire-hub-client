@@ -1,3 +1,5 @@
+import SignUpForm from "@/components/auth/SignUpForm";
+
 export const metadata = {
   title: "Signup - Hire Hub",
   description:
@@ -6,8 +8,16 @@ export const metadata = {
 
 const SignUpPage = () => {
   return (
-    <div>
-      <p>SignUpPage</p>
+    <div className="pt-10 pb-20 bg-[#010103] px-4">
+      <div className="text-center">
+        <h3 className="text-2xl font-semibold md:text-4xl">
+          Create an Account
+        </h3>
+        <p className="mt-4">Fill in the fields below to get started</p>
+      </div>
+      <div className="flex items-center justify-center mt-10 max-w-3xl mx-auto">
+        <SignUpForm />
+      </div>
     </div>
   );
 };
