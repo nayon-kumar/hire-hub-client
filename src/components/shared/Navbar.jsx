@@ -53,14 +53,14 @@ const Navbar = () => {
           {/* Desktop Buttons */}
           <div className="hidden items-center gap-4 md:flex">
             <Link
-              href="/signin"
+              href="/auth/signin"
               className="text-sm text-indigo-400 transition hover:text-indigo-300"
             >
               Sign In
             </Link>
 
             <Link
-              href="/signup"
+              href="/auth/signup"
               className="rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-5 py-2 text-sm font-medium text-white transition hover:opacity-90"
             >
               Get Started
@@ -102,7 +102,7 @@ const Navbar = () => {
               <hr className="border-gray-700" />
 
               <Link
-                href="/signin"
+                href="/auth/signin"
                 className="text-indigo-400 py-2 px-3 rounded-xl hover:bg-white/5"
                 onClick={() => setIsOpen(false)}
               >
@@ -110,7 +110,7 @@ const Navbar = () => {
               </Link>
 
               <Link
-                href="/signup"
+                href="/auth/signup"
                 className="rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-4 py-2 text-center font-medium text-white"
                 onClick={() => setIsOpen(false)}
               >
