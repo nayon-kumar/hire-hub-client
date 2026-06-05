@@ -21,10 +21,9 @@ const SignUpForm = () => {
   const [isPending, setIsPending] = useState(false);
 
   const handleGoogle = async () => {
-    console.log("Hello");
-    //   const data = await authClient.signIn.social({
-    //     provider: "google",
-    //   });
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
   };
 
   const onSubmit = async (e) => {
@@ -52,7 +51,7 @@ const SignUpForm = () => {
     }
   };
   return (
-    <div className="flex w-full p-10 rounded-xl shadow bg-[#151516] flex-col gap-4 border border-gray-100">
+    <div className="flex w-full p-10 rounded-2xl shadow bg-[#151516] flex-col gap-4">
       <Form onSubmit={onSubmit} className="space-y-4">
         <TextField isRequired name="name" type="text">
           <Label className="text-white">Name</Label>
@@ -124,7 +123,7 @@ const SignUpForm = () => {
       <div className="flex items-center gap-3">
         <div className="flex-1 h-px bg-gray-300"></div>
 
-        <span className="text-sm text-gray-500">Or continue with</span>
+        <span className="text-sm">Or continue with</span>
 
         <div className="flex-1 h-px bg-gray-300"></div>
       </div>
@@ -138,7 +137,7 @@ const SignUpForm = () => {
       <p className="text-center">
         Already have an account?{" "}
         <Link href="/auth/signin" className="text-[#15A1BF] font-semibold">
-          Login
+          Signin
         </Link>
       </p>
     </div>
