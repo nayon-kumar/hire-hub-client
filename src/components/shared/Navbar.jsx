@@ -2,13 +2,24 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // ← Add this
+import { usePathname, useRouter } from "next/navigation";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { authClient } from "@/lib/auth-client";
+import { Button } from "@heroui/react";
 
 const Navbar = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // ← Get current path
+  const pathname = usePathname();
+
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+
+  const handleSignOut = async () => {
+    await authClient.signOut();
+    router.push("/");
+  };
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -52,19 +63,31 @@ const Navbar = () => {
 
           {/* Desktop Buttons */}
           <div className="hidden items-center gap-4 md:flex">
-            <Link
-              href="/auth/signin"
-              className="text-sm text-indigo-400 transition hover:text-indigo-300"
-            >
-              Sign In
-            </Link>
+            {user ? (
+              <>
+                <div>
+                  <Button onClick={handleSignOut} variant="secondary">
+                    Logout
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/auth/signin"
+                  className="text-sm text-indigo-400 transition hover:text-indigo-300"
+                >
+                  Sign In
+                </Link>
 
-            <Link
-              href="/auth/signup"
-              className="rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-5 py-2 text-sm font-medium text-white transition hover:opacity-90"
-            >
-              Get Started
-            </Link>
+                <Link
+                  href="/auth/signup"
+                  className="rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-5 py-2 text-sm font-medium text-white transition hover:opacity-90"
+                >
+                  Get Started
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
