@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -13,6 +14,8 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
+import { redirect } from "next/navigation";
 
 const SignUpForm = () => {
   const [isPending, setIsPending] = useState(false);
@@ -27,27 +30,26 @@ const SignUpForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     setIsPending(true);
-    console.log("Hello");
-    // try {
-    //   const formData = new FormData(e.target);
-    //   const signUpData = Object.fromEntries(formData.entries());
+    try {
+      const formData = new FormData(e.target);
+      const signUpData = Object.fromEntries(formData.entries());
 
-    //   const { data, error } = await authClient.signUp.email({
-    //     name: signUpData.name,
-    //     email: signUpData.email,
-    //     password: signUpData.password,
-    //     image: signUpData.image,
-    //   });
-    //   if (data) {
-    //     await authClient.signOut();
-    //     toast.success("Register Successfully!");
-    //     redirect("/login");
-    //   } else {
-    //     toast.error(`${error.message}`);
-    //   }
-    // } finally {
-    //   setIsPending(false);
-    // }
+      const { data, error } = await authClient.signUp.email({
+        name: signUpData.name,
+        email: signUpData.email,
+        password: signUpData.password,
+        image: signUpData.image,
+      });
+      if (data) {
+        await authClient.signOut();
+        toast.success("Register Successfully!");
+        redirect("/auth/signin");
+      } else {
+        toast.error(`${error.message}`);
+      }
+    } finally {
+      setIsPending(false);
+    }
   };
   return (
     <div className="flex w-full p-10 rounded-xl shadow bg-[#151516] flex-col gap-4 border border-gray-100">
@@ -65,7 +67,6 @@ const SignUpForm = () => {
             if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
               return "Please enter a valid email address";
             }
-
             return null;
           }}
         >

@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  serverExternalPackages: [
+    "better-auth",
+    "@better-auth/mongo-adapter",
+    "mongodb",
+  ],
 };
 
 export default nextConfig;
