@@ -16,9 +16,11 @@ import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import { Description, Radio, RadioGroup } from "@heroui/react";
 
 const SignUpForm = () => {
   const [isPending, setIsPending] = useState(false);
+  const [role, setRole] = useState("seeker");
 
   const handleGoogle = async () => {
     const data = await authClient.signIn.social({
@@ -37,6 +39,7 @@ const SignUpForm = () => {
         name: signUpData.name,
         email: signUpData.email,
         password: signUpData.password,
+        role: role,
       });
       if (data) {
         await authClient.signOut();
@@ -96,6 +99,33 @@ const SignUpForm = () => {
           <Input placeholder="Enter your password" />
           <FieldError />
         </TextField>
+
+        <div className="flex flex-col gap-4">
+          <Label className="text-white">Subscription plan</Label>
+          <RadioGroup
+            defaultValue="seeker"
+            name="role"
+            orientation="horizontal"
+            onChange={(value) => setRole(value)}
+          >
+            <Radio value="seeker">
+              <Radio.Control>
+                <Radio.Indicator />
+              </Radio.Control>
+              <Radio.Content>
+                <Label className="text-white">Job Seeker</Label>
+              </Radio.Content>
+            </Radio>
+            <Radio value="recruiter">
+              <Radio.Control>
+                <Radio.Indicator />
+              </Radio.Control>
+              <Radio.Content>
+                <Label className="text-white">Recruiter</Label>
+              </Radio.Content>
+            </Radio>
+          </RadioGroup>
+        </div>
 
         <div className="flex gap-2">
           <Button type="submit" className="w-full">
