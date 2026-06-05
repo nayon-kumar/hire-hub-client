@@ -1,3 +1,5 @@
+import SignInForm from "@/components/auth/SignInForm";
+
 export const metadata = {
   title: "Signin - Hire Hub",
   description:
@@ -6,8 +8,14 @@ export const metadata = {
 
 const SingInPage = () => {
   return (
-    <div>
-      <p>SingInPage</p>
+    <div className="pt-10 pb-20 bg-[#010103] px-4">
+      <div className="text-center">
+        <h3 className="text-2xl font-semibold md:text-4xl">Welcome Back</h3>
+        <p className="mt-4">Enter your credentials to access your account</p>
+      </div>
+      <div className="flex items-center justify-center mt-10 max-w-3xl mx-auto">
+        <SignInForm />
+      </div>
     </div>
   );
 };
