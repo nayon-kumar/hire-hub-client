@@ -37,7 +37,6 @@ const SignUpForm = () => {
         name: signUpData.name,
         email: signUpData.email,
         password: signUpData.password,
-        image: signUpData.image,
       });
       if (data) {
         await authClient.signOut();
@@ -71,12 +70,6 @@ const SignUpForm = () => {
         >
           <Label className="text-white">Email</Label>
           <Input placeholder="john@example.com" />
-          <FieldError />
-        </TextField>
-
-        <TextField isRequired name="image" type="url">
-          <Label className="text-white">Photo URL</Label>
-          <Input placeholder="Enter photo url" />
           <FieldError />
         </TextField>
 
