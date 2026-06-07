@@ -34,7 +34,7 @@ const DashboardSidebar = () => {
   );
   return (
     <>
-      <aside className="hidden w-50 shrink-0 border-r border-gray-700 py-4 lg:block ">
+      <aside className="hidden w-50 shrink-0 border-r border-gray-700 py-4 pr-4 mr-4 lg:block ">
         {navContent}
       </aside>
       <Drawer>
