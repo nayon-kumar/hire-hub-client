@@ -11,9 +11,9 @@ import { Button, Drawer } from "@heroui/react";
 const DashboardSidebar = () => {
   const navItems = [
     { icon: House, label: "Home" },
-    { icon: Magnifier, label: "Search" },
+    { icon: Magnifier, label: "Manage Jobs" },
     { icon: Bell, label: "Notifications" },
-    { icon: Envelope, label: "Messages" },
+    { icon: Envelope, label: "Applications" },
     { icon: Person, label: "Profile" },
     { icon: Gear, label: "Settings" },
   ];
