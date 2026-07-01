@@ -1,6 +1,6 @@
 This is a [Next.js] project bootstrapped 
 
-## Getting Started
+## Started
 
 First, run the development server:
 
