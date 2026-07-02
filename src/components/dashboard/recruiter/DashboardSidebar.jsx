@@ -1,5 +1,5 @@
 import {
-  LayoutSideContentLeft,
+  Bars,
   Bell,
   Envelope,
   Gear,
@@ -39,8 +39,7 @@ const DashboardSidebar = () => {
       </aside>
       <Drawer>
         <Button className="lg:hidden" variant="secondary">
-          <LayoutSideContentLeft />
-          Menu
+          <Bars />
         </Button>
         <Drawer.Backdrop>
           <Drawer.Content placement="left">
