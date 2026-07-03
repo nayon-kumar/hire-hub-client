@@ -9,8 +9,8 @@ export const metadata = {
 const DashboardLayout = ({ children }) => {
   return (
     <div className="max-w-7xl w-full mx-auto px-4">
-      <div className="min-h-screen pt-4 pb-20">
-        <div className="">
+      <div className="lg:flex min-h-screen pt-4 pb-20">
+        <div>
           <DashboardSidebar />
         </div>
         <div className="flex-1">{children}</div>
