@@ -1,24 +1,21 @@
-const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const serverFetch = async (path) => {
-  const res = await fetch(`${baseURL}${path}`);
-
-  if (!res.ok) {
-    const text = await res.text();
-    console.error(text);
-    throw new Error(`Request failed: ${res.status}`);
-  }
-
+  const res = await fetch(`${baseUrl}${path}`);
+  // handle 401, 404, 403
   return res.json();
 };
 
 export const serverMutation = async (path, data) => {
-  const res = await fetch(`${baseURL}${path}`, {
+  const res = await fetch(`${baseUrl}${path}`, {
     method: "POST",
     headers: {
-      "Content-type": "application/json",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
   });
+
+  // handle 401, 404, 403
+
   return res.json();
 };
