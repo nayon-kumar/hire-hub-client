@@ -129,7 +129,7 @@ const SignInForm = () => {
       <p className="text-center">
         Don't have an account?{" "}
         <Link
-          href={`/auth/signup?${redirectTo}`}
+          href={`/auth/signup?redirect=${redirectTo}`}
           className="text-[#15A1BF] font-semibold"
         >
           Signup

@@ -15,12 +15,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { Description, Radio, RadioGroup } from "@heroui/react";
 
 const SignUpForm = () => {
   const [isPending, setIsPending] = useState(false);
   const [role, setRole] = useState("seeker");
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "";
 
   const handleGoogle = async () => {
     const data = await authClient.signIn.social({
@@ -159,7 +161,10 @@ const SignUpForm = () => {
       </Button>
       <p className="text-center">
         Already have an account?{" "}
-        <Link href="/auth/signin" className="text-[#15A1BF] font-semibold">
+        <Link
+          href={`/auth/signin?redirect=${redirectTo}`}
+          className="text-[#15A1BF] font-semibold"
+        >
           Signin
         </Link>
       </p>
