@@ -6,7 +6,7 @@ export const metadata = {
     "HireLoop is a full-featured job hunting portal that bridges the gap between job seekers and employers. It streamlines job discovery, application management, and company recruitment — all in one platform.",
 };
 
-const SingInPage = () => {
+const SingInPage = async () => {
   return (
     <div className="pt-10 pb-20 bg-[#010103] px-4">
       <div className="text-center">

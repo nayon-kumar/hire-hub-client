@@ -15,8 +15,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import toast from "react-hot-toast";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const SignInForm = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirect") || "/";
+  console.log(redirectTo);
+
   const [isPending, setIsPending] = useState(false);
 
   const handleGoogle = async () => {
@@ -35,10 +41,10 @@ const SignInForm = () => {
         email: loginData.email,
         password: loginData.password,
         rememberMe: true,
-        callbackURL: "/",
       });
       if (data) {
         toast.success("Sign In Successfully!");
+        router.push(redirectTo);
       } else {
         toast.error(`${error.message}`);
       }
@@ -122,7 +128,10 @@ const SignInForm = () => {
       </Button>
       <p className="text-center">
         Don't have an account?{" "}
-        <Link href="/auth/signup" className="text-[#15A1BF] font-semibold">
+        <Link
+          href={`/auth/signup?${redirectTo}`}
+          className="text-[#15A1BF] font-semibold"
+        >
           Signup
         </Link>
       </p>
