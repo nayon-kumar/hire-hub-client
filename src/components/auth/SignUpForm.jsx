@@ -37,11 +37,14 @@ const SignUpForm = () => {
       const formData = new FormData(e.target);
       const signUpData = Object.fromEntries(formData.entries());
 
+      const plan = role === "seeker" ? "seeker_free" : "recruiter_free";
+      console.log(plan);
       const { data, error } = await authClient.signUp.email({
         name: signUpData.name,
         email: signUpData.email,
         password: signUpData.password,
         role: role,
+        plan: plan,
       });
       if (data) {
         await authClient.signOut();
