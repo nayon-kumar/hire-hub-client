@@ -38,7 +38,6 @@ const SignUpForm = () => {
       const signUpData = Object.fromEntries(formData.entries());
 
       const plan = role === "seeker" ? "seeker_free" : "recruiter_free";
-      console.log(plan);
       const { data, error } = await authClient.signUp.email({
         name: signUpData.name,
         email: signUpData.email,
