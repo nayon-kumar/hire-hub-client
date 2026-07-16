@@ -2,7 +2,7 @@ This is a [Next.js] project bootstrapped
 
 ## Started
 
-First, run the development server:
+First, run the server:
 
 npm run dev
 ```
