@@ -21,7 +21,6 @@ const SignInForm = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirect") || "/";
-  console.log(redirectTo);
 
   const [isPending, setIsPending] = useState(false);
 

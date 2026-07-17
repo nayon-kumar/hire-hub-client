@@ -2,7 +2,7 @@ import DashboardSidebar from "@/components/dashboard/recruiter/DashboardSidebar"
 import { getUserSession } from "@/lib/core/session";
 
 const user = await getUserSession();
-const role = user.role;
+const role = user?.role || "seeker";
 const capitalizedRole = role.charAt(0).toUpperCase() + role.slice(1);
 
 export const metadata = {
