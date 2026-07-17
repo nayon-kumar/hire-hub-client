@@ -1,7 +1,12 @@
 import DashboardSidebar from "@/components/dashboard/recruiter/DashboardSidebar";
+import { getUserSession } from "@/lib/core/session";
+
+const user = await getUserSession();
+const role = user.role;
+const capitalizedRole = role.charAt(0).toUpperCase() + role.slice(1);
 
 export const metadata = {
-  title: "Recruiter - Dashboard",
+  title: `${capitalizedRole} - Dashboard`,
   description:
     "HireLoop is a full-featured job hunting portal that bridges the gap between job seekers and employers. It streamlines job discovery, application management, and company recruitment — all in one platform.",
 };
