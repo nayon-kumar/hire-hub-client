@@ -1,9 +1,14 @@
+import { getApplicationsByApplicant } from "@/lib/api/applications";
+import { getUserSession } from "@/lib/core/session";
 import React from "react";
+import ApplicationsTable from "./ApplicationTable";
 
-const ApplicationsPage = () => {
+const ApplicationsPage = async () => {
+  const user = await getUserSession();
+  const jobs = await getApplicationsByApplicant(user.id);
   return (
     <div>
-      <p>ApplicationsPage</p>
+      <ApplicationsTable jobs={jobs}></ApplicationsTable>
     </div>
   );
 };
